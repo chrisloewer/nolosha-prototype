@@ -1,4 +1,117 @@
 
+@import "variables";
+
 body {
   margin: 0;
+}
+
+.flex-layout {
+  position: relative;
+  min-height: 100vh;
+  background-color: #999999;
+  display: flex;
+  flex-direction: column;
+
+  .flex-layout__header {
+    // Nav shrinks to wrong hamburger menu on mobile
+    height: 50px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    z-index: 15;
+    background: #DDD;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    @include disable-select;
+    @include border-radius(50%);
+    @include transition(all 0.2s);
+
+    .full-nav-item {
+      display: none;
+    }
+
+    // Nav expands to top level header on larger screens
+    @media (min-width: $tabletWidth) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 80px;
+      width: 100%;
+      padding: 10px 0;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 0;
+      @include transition(all 0.2s);
+      @include shadow(0 -1px 10px 2px transparentize($black-gray, 0.4));
+
+      .full-nav-item {
+        display: block;
+      }
+    }
+  }
+
+  .flex-layout__body {
+    flex-grow: 1;
+    @include transition(all 0.2s);
+
+    @media (min-width: $tabletWidth) {
+      margin-top: 100px;      // height of header
+    }
+  }
+
+  .flex-layout__footer {
+    height: 120px;
+    background: #777777;
+  }
+}
+
+.hamburger-icon {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  @include transition(all 0.5s);
+
+  span {
+    display: block;
+    position: relative;
+    height: 2px;
+    width: 22px;
+    background-color: white;
+    margin: 5px 0;
+    @include transform-origin(left center);
+    @include transition(all 0.5s);
+  }
+
+  &.open {
+    @include transform(translateX(2.5px));
+    @include transition(all 0.5s);
+
+    span {
+      @include transition(all 0.5s);
+    }
+    span:nth-child(1) {
+      @include transform(rotate(41deg));
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      @include transform(rotate(-41deg));
+    }
+  }
+
+  @media (min-width: $tabletWidth) {
+    display: none;
+  }
+}
+
+.temp-content {
+  margin: 20px;
+  background: #888888;
+  height: 1800px;
 }
