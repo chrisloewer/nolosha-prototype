@@ -3,72 +3,79 @@
 
 body {
   margin: 0;
+  
+  &.scroll-lock {
+    overflow: hidden;
+  }
 }
 
+// Main page layout
 .flex-layout {
   position: relative;
   min-height: 100vh;
   background-color: #999999;
   display: flex;
   flex-direction: column;
+}
 
-  .flex-layout__header {
-    // Nav shrinks to wrong hamburger menu on mobile
-    height: 50px;
+
+.flex-layout__header {
+  // Nav shrinks to wrong hamburger menu on mobile
+  height: 50px;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 50px;
+  z-index: 15;
+  background: #DDD;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  @include disable-select;
+  @include border-radius(50%);
+  @include transition(all 0.2s);
+
+  .full-nav-item {
+    display: none;
+  }
+
+  // Nav expands to top level header on larger screens
+  @media (min-width: $tabletWidth) {
     position: fixed;
-    top: 15px;
-    left: 15px;
-    width: 50px;
-    z-index: 15;
-    background: #DDD;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    padding: 10px 0;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    @include disable-select;
-    @include border-radius(50%);
+    border-radius: 0;
     @include transition(all 0.2s);
+    @include shadow(0 -1px 10px 2px transparentize($black-gray, 0.4));
 
     .full-nav-item {
-      display: none;
+      display: block;
     }
-
-    // Nav expands to top level header on larger screens
-    @media (min-width: $tabletWidth) {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 80px;
-      width: 100%;
-      padding: 10px 0;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      border-radius: 0;
-      @include transition(all 0.2s);
-      @include shadow(0 -1px 10px 2px transparentize($black-gray, 0.4));
-
-      .full-nav-item {
-        display: block;
-      }
-    }
-  }
-
-  .flex-layout__body {
-    flex-grow: 1;
-    @include transition(all 0.2s);
-
-    @media (min-width: $tabletWidth) {
-      margin-top: 100px;      // height of header
-    }
-  }
-
-  .flex-layout__footer {
-    height: 120px;
-    background: #777777;
   }
 }
+
+.flex-layout__body {
+  flex-grow: 1;
+  @include transition(all 0.2s);
+
+  @media (min-width: $tabletWidth) {
+    margin-top: 100px;      // height of header
+  }
+}
+
+.flex-layout__footer {
+  height: 120px;
+  background: #777777;
+}
+
 
 .hamburger-icon {
   display: inline-block;
@@ -87,7 +94,7 @@ body {
     @include transition(all 0.5s);
   }
 
-  &.open {
+  &.hamburger-icon--open {
     @include transform(translateX(2.5px));
     @include transition(all 0.5s);
 
@@ -105,6 +112,43 @@ body {
     }
   }
 
+  @media (min-width: $tabletWidth) {
+    display: none;
+  }
+}
+
+// Mobile menu is drawer menu opened and closed by hamburger icon on mobile viewport
+.mobile-menu {
+  // Menu closed by default
+  z-index: 10;
+  background-color: $dark-gray;
+  height: 100vh;
+  width: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include shadow(0 6px 10px -1px $black-gray);
+  @include transition(width 0.5s, z-index 0.5s 0.5s);
+
+  .mobile-menu__content {
+    opacity: 0;
+    @include transition(all 0.5s);
+  }
+
+  // Menu open
+  &.mobile-menu--open {
+    width: 100vw;
+    @include transition(all 0.5s);
+
+    .mobile-menu__content {
+      opacity: 1;
+    }
+  }
+
+  // Menu only usable on mobile viewports
   @media (min-width: $tabletWidth) {
     display: none;
   }
