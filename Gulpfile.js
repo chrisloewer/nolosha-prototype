@@ -19,6 +19,11 @@ function copyScripts() {
   .pipe(gulp.dest(`${outputDir}/scripts`));
 }
 
+function copyResources() {
+  return gulp.src(`${baseDir}/resources/**/*`)
+  .pipe(gulp.dest(`${outputDir}/resources`));
+}
+
 function copyViews() {
   return gulp.src(`${baseDir}/views/*.html`)
   .pipe(gulp.dest(`${outputDir}/views`));
@@ -27,11 +32,12 @@ function copyViews() {
 function watch() {
   gulp.watch(`${baseDir}/styles/*.scss`, formatStyles);
   gulp.watch(`${baseDir}/scripts/*.js`, copyScripts);
+  gulp.watch(`${baseDir}/resources/**/*`, copyResources);
   gulp.watch(`${baseDir}/views/*.html`, copyViews);
   return;
 }
 
-exports.build = gulp.parallel(formatStyles, copyScripts, copyViews);
+exports.build = gulp.parallel(formatStyles, copyResources, copyScripts, copyViews);
 exports.formatStyles = formatStyles;
 exports.watch = watch;
 exports.buildAndWatch = gulp.series(this.build, watch);

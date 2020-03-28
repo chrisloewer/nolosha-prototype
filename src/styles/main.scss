@@ -81,6 +81,7 @@ body {
   display: inline-block;
   padding: 10px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   @include transition(all 0.5s);
 
   span {
@@ -117,8 +118,8 @@ body {
   }
 }
 
-// Mobile menu is drawer menu opened and closed by hamburger icon on mobile viewport
-.mobile-menu {
+// Mobile drawer menu opened and closed by hamburger icon on mobile viewport
+.mobile-drawer {
   // Menu closed by default
   z-index: 10;
   background-color: $dark-gray;
@@ -133,24 +134,65 @@ body {
   @include shadow(0 6px 10px -1px $black-gray);
   @include transition(width 0.5s, z-index 0.5s 0.5s);
 
-  .mobile-menu__content {
+  .mobile-drawer__content {
     opacity: 0;
-    @include transition(all 0.5s);
   }
 
-  // Menu open
-  &.mobile-menu--open {
+  // Drawer open
+  &.mobile-drawer--open {
     width: 100vw;
     @include transition(all 0.5s);
 
-    .mobile-menu__content {
+    .mobile-drawer__content {
       opacity: 1;
+    @include transition(all 0.3s 0.2s);
     }
   }
 
-  // Menu only usable on mobile viewports
+  // Drawer only usable on mobile viewports
   @media (min-width: $tabletWidth) {
     display: none;
+  }
+
+  .mobile-drawer__header {
+    height: 80px;   // same height as hamburger icon + padding
+    line-height: 80px;
+    margin: 0;
+    text-align: center;
+    background: red;
+  }
+
+
+  // Menu navigation
+  .mobile-menu {
+    list-style: none;
+    margin: 10px;
+    padding: 0;;
+
+    .mobile-menu__item {
+      position: relative;
+      padding: 20px;
+      font-size: 18px;
+      background: #DDDDDD;
+
+      &:not(:last-of-type) {
+        margin-bottom: 5px;
+      }
+
+      &.mobile-menu__item--nested {
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 10px;
+          margin-right: 15px;
+          background: url('../resources/icons/arrow.svg') no-repeat center center;
+        }
+      }
+    }
   }
 }
 

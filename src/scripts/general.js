@@ -6,7 +6,7 @@ window.addEventListener('load', function () {
 
   // Make hamburger toggle open menu
   let menuIcon = document.getElementById('hamburger-icon-body');
-  menuIcon.addEventListener('click', toggleMenuPopup, false);
+  menuIcon.addEventListener('click', toggleMenuDrawer, false);
 
   let headerIcon = document.getElementById('header-icon');  
 });
@@ -18,28 +18,28 @@ window.addEventListener('load', function () {
 // Hamburger Menu
 // -------------------------------------------------------------------------------------------------------
 
-function toggleMenuPopup() {
+function toggleMenuDrawer() {
   let body = document.getElementById('body');
   let menu = document.getElementById('mobile-menu-drawer');
   let icon = document.getElementById('hamburger-icon-body');
   if (body && icon) {
     toggleClass(body, 'scroll-lock');
-    toggleClass(menu, 'mobile-menu--open');
+    toggleClass(menu, 'mobile-drawer--open');
     toggleClass(icon, 'hamburger-icon--open');
   }
 }
 
-function closeMenuPopup() {
-  let menu = document.getElementById('mobile-menu-drawer');
+function closeMenuDrawer() {
+  let menu = document.getElementById('mobile-drawer-drawer');
   if (menu) {
-    removeClass(menu, 'mobile-menu--open');
+    removeClass(menu, 'mobile-drawer--open');
   }
 }
 
-function openMenuPopup() {
-  let menu = document.getElementById('mobile-menu-drawer');
+function openMenuDrawer() {
+  let menu = document.getElementById('mobile-drawer-drawer');
   if (menu) {
-    addClass(menu, 'mobile-menu--open');
+    addClass(menu, 'mobile-drawer--open');
   }
 }
 
