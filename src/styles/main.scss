@@ -1,5 +1,23 @@
 
 @import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+
+// --------------------------------------------------------------------------------
+// GENERAL
+// --------------------------------------------------------------------------------
+
+* {
+  font-family: 'Noto Sans JP', sans-serif;
+  // font-family: 'Cabin', sans-serif;
+  // font-family: 'Lato', sans-serif;
+  
+  
+  // font-weight: 300;
+}
 
 body {
   margin: 0;
@@ -9,11 +27,19 @@ body {
   }
 }
 
+h1, h2, h3, h4, h5 {
+}
+
+
+// --------------------------------------------------------------------------------
+// LAYOUT
+// --------------------------------------------------------------------------------
+
 // Main page layout
 .flex-layout {
   position: relative;
   min-height: 100vh;
-  background-color: #999999;
+  background-color: $white-gray;
   display: flex;
   flex-direction: column;
 }
@@ -27,7 +53,7 @@ body {
   left: 15px;
   width: 50px;
   z-index: 15;
-  background: #DDD;
+  background: $black-gray-transluscent;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -122,7 +148,7 @@ body {
 .mobile-drawer {
   // Menu closed by default
   z-index: 10;
-  background-color: $dark-gray;
+  background-color: $medium-gray;
   height: 100vh;
   width: 0;
   overflow: hidden;
@@ -131,11 +157,12 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  @include shadow(0 6px 10px -1px $black-gray);
+  @include shadow(0 0 10px 1px $black-gray);
   @include transition(width 0.5s, z-index 0.5s 0.5s);
 
   .mobile-drawer__content {
     opacity: 0;
+    @include transition(all 0.2s);
   }
 
   // Drawer open
@@ -145,7 +172,7 @@ body {
 
     .mobile-drawer__content {
       opacity: 1;
-    @include transition(all 0.3s 0.2s);
+      @include transition(all 0.3s 0.2s);
     }
   }
 
@@ -159,24 +186,24 @@ body {
     line-height: 80px;
     margin: 0;
     text-align: center;
-    background: red;
   }
 
 
   // Menu navigation
   .mobile-menu {
     list-style: none;
-    margin: 10px;
-    padding: 0;;
+    margin: 0;
+    padding: 0;
 
     .mobile-menu__item {
       position: relative;
-      padding: 20px;
+      padding: 15px 20px;
       font-size: 18px;
-      background: #DDDDDD;
+      font-weight: 300;
+      background: $white-gray;
 
       &:not(:last-of-type) {
-        margin-bottom: 5px;
+        border-bottom: 0.5px solid $neutral;
       }
 
       &.mobile-menu__item--nested {
@@ -198,6 +225,5 @@ body {
 
 .temp-content {
   margin: 20px;
-  background: #888888;
   height: 1800px;
 }
