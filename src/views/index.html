@@ -19,14 +19,16 @@
         <div class="mobile-drawer__content">
             <h2 class="mobile-drawer__header">Nolosha Cusub</h2>
             
-            <ul class="mobile-menu">
-                <li class="mobile-menu__item">Qoraal</li>
-                <li class="mobile-menu__item mobile-menu__item--nested">MuuQaal</li>
-                <li class="mobile-menu__item">Kitaabka Quduuska Ah</li>
-                <li class="mobile-menu__item">Jadwalka Idaacadda</li>
-                <li class="mobile-menu__item">Bogag Kale</li>
-                <li class="mobile-menu__item">Nagala soo xiriir</li>
-            </ul>
+            <section id="mobile-menu-container">
+                <!-- <ul class="mobile-menu">
+                    <li class="mobile-menu__item">Qoraal</li>
+                    <li class="mobile-menu__item mobile-menu__item--nested">MuuQaal</li>
+                    <li class="mobile-menu__item">Kitaabka Quduuska Ah</li>
+                    <li class="mobile-menu__item">Jadwalka Idaacadda</li>
+                    <li class="mobile-menu__item">Bogag Kale</li>
+                    <li class="mobile-menu__item">Nagala soo xiriir</li>
+                </ul> -->
+            </section>
         </div>
     </div>
 
@@ -44,7 +46,9 @@
 
         <!-- BODY -->
         <div class="flex-layout__body">
-            <div class="temp-content"></div>
+            <h1 class="page-title">Nolosha Cusub</h1>
+
+            <div id="like_button_container"></div>
         </div>
 
         <!-- FOOTER -->
@@ -53,5 +57,11 @@
         </div>
     </div>
 
+    <!-- REACT SCRIPTS -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- COMPONENTS -->
+    <script type="text/javascript" src="../scripts/react/mobile-menu-component.js"></script>
 </body>
 </html>

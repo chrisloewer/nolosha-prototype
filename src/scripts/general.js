@@ -1,6 +1,7 @@
 // Any javascript will go here
 
 var headerNav;
+var state = {};
 
 window.addEventListener('load', function () {
 
