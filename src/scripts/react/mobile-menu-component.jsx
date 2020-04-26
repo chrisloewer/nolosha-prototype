@@ -159,18 +159,21 @@ function MobileMenu() {
   }
 
   return (
-    <div>
-      {parentMenuArr && parentMenuArr.length > 0 && parentTitleArr && parentTitleArr.length > 0 && <h2
-        onClick={prevMenuClick}>
-          {parentTitleArr[parentTitleArr.length - 1]}
-      </h2>}
+    <div className='mobile-menu-component'>
+      {parentMenuArr && parentMenuArr.length > 0 && parentTitleArr && parentTitleArr.length > 0 &&
+      <div className="mobile-menu-control">
+        <span className="mobile-menu-control__home-icon"
+          onClick={resetMenu}></span>
+        <span className="mobile-menu-control__back-icon"
+          onClick={prevMenuClick}></span>
+        <span className="mobile-menu-control__title"
+          onClick={prevMenuClick}>
+            {parentTitleArr[parentTitleArr.length - 1]}
+        </span>
+      </div>}
       <ul className="mobile-menu">
         {menuItems}
       </ul>
-      <h3
-        onClick={resetMenu}>
-          reset
-      </h3>
     </div>
   );
 }
