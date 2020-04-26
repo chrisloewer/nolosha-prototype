@@ -110,17 +110,68 @@ const MOBILE_MENU = [
 
 function MobileMenu() {
 
+  const [menu, setMenu] = React.useState(MOBILE_MENU);
+
+  // parent elements are arrays to keep track of history
+  const [parentMenuArr, setParentMenuArr] = React.useState([]);
+  const [parentTitleArr, setParentTitleArr] = React.useState([]);
+
   let menuItems = [];
 
-  MOBILE_MENU.forEach(x => {
-    let listItem = <li className="mobile-menu__item" key={x.title} title={x.alt}>{x.title}</li>;
+  menu.forEach(x => {
+    let hasSubMenu = x.subItems && x.subItems.length > 0;
+
+    let listItem = <li
+        className={ hasSubMenu ? 'mobile-menu__item mobile-menu__item--nested' : 'mobile-menu__item'}
+        onClick={() => menuItemClick(menu, x.title, x.subItems)}
+        key={x.title}
+        title={x.alt}>
+          {x.title}
+      </li>;
     menuItems.push(listItem);
   });
 
+  // Click handler for menu items. Should navigate to next menu if one exists
+  function menuItemClick(baseMenu, title, subMenu) {
+    if (subMenu && subMenu.length > 0) {
+      parentMenuArr.push(baseMenu);
+      parentTitleArr.push(title);
+      setParentMenuArr(parentMenuArr);
+      setParentTitleArr(parentTitleArr);
+      setMenu(subMenu);
+    }
+  }
+
+  // Click handler for title of the previous menu. Works as going up a directory
+  function prevMenuClick() {
+    let prevMenu = parentMenuArr.pop();
+    let prevTitle = parentTitleArr.pop();
+    setParentMenuArr(parentMenuArr);
+    setParentTitleArr(parentTitleArr);
+    setMenu(prevMenu);
+  }
+
+  // Resets menu to base state
+  function resetMenu() {
+    setParentMenuArr([]);
+    setParentTitleArr([]);
+    setMenu(MOBILE_MENU);
+  }
+
   return (
-    <ul className="mobile-menu">
-      {menuItems}
-    </ul>
+    <div>
+      {parentMenuArr && parentMenuArr.length > 0 && parentTitleArr && parentTitleArr.length > 0 && <h2
+        onClick={prevMenuClick}>
+          {parentTitleArr[parentTitleArr.length - 1]}
+      </h2>}
+      <ul className="mobile-menu">
+        {menuItems}
+      </ul>
+      <h3
+        onClick={resetMenu}>
+          reset
+      </h3>
+    </div>
   );
 }
 
