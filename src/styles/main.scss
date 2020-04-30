@@ -1,10 +1,6 @@
 
 @import "variables";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
 // --------------------------------------------------------------------------------
 // GENERAL
@@ -12,11 +8,7 @@
 
 * {
   font-family: 'Noto Sans JP', sans-serif;
-  // font-family: 'Cabin', sans-serif;
-  // font-family: 'Lato', sans-serif;
-  
-  
-  // font-weight: 300;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -271,6 +263,7 @@ h1 {
   }
 }
 
+// Desktop nav menu only visible on larger viewports
 .desktop-nav-container {
   width: 100%;
 }
@@ -285,27 +278,72 @@ h1 {
   .desktop-nav__item {
     padding: 10px 15px;
 
-    &:hover {
+    &:hover, &:active {
       .desktop-nav__expansion {
         display: block;
         position: absolute;
-        // top: 0;
         left: 0;
+        min-height: 400px;
         width: 100%;
-        padding-top: 40px;
-        background-color: #0f880f;
-        height: 400px;
+        background-color: transparent;
         z-index: 15;
-
-        &.desktop-nav__expansion--priority {
-          z-index: 20;
-        }
       }
     }
   }
 
   .desktop-nav__expansion {
     display: none;
+  }
+}
+
+.nav-submenu {
+  margin-top: 20px;
+  background-color: #882244;
+  height: 100%;
+
+  .nav-submenu__header {
+    text-align: center;
+    padding: 20px 0 0;
+  }
+
+  .nav-submenu__row {
+    width: 100%;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-submenu__col {
+    margin: 0 20px;
+    width: 200px;
+    position: relative;
+
+    h4 {
+      margin: 15px 0 5px 0;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 95%;
+        height: 1px;
+        background: #000000;
+      }
+    }
+
+    a {
+      display: block;
+      color: inherit;
+      // text-indent: -10px;
+      // margin-left: 10px; // cancels out negative text indent for hanging indent
+      text-decoration: none;
+      line-height: 1.1;
+      padding: 12px 0 0;
+
+      &:hover, &:active {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
