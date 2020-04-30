@@ -178,5 +178,5 @@ function MobileMenu() {
   );
 }
 
-const domContainer = document.getElementById('mobile-menu-container');
-ReactDOM.render(<MobileMenu />, domContainer);
+const mobileMenuContainer = document.getElementById('mobile-menu-container');
+ReactDOM.render(<MobileMenu />, mobileMenuContainer);

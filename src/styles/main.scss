@@ -36,6 +36,10 @@ h1 {
   margin: 0 80px;
 }
 
+.center-text {
+  text-align: center;
+}
+
 
 // --------------------------------------------------------------------------------
 // LAYOUT
@@ -77,13 +81,14 @@ h1 {
     position: fixed;
     top: 0;
     left: 0;
-    height: 80px;
+    height: initial;
     width: 100%;
     padding: 10px 0;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    flex-direction: column;
+    overflow: visible;
     border-radius: 0;
     @include transition(all 0.2s);
     @include shadow(0 -1px 10px 2px transparentize($black-gray, 0.4));
@@ -201,7 +206,7 @@ h1 {
   }
 
 
-  // Menu navigation
+  // Mobile Menu navigation
   .mobile-menu-control {
     display: flex;
     background: snow;
@@ -263,6 +268,44 @@ h1 {
         }
       }
     }
+  }
+}
+
+.desktop-nav-container {
+  width: 100%;
+}
+
+.desktop-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  .desktop-nav__item {
+    padding: 10px 15px;
+
+    &:hover {
+      .desktop-nav__expansion {
+        display: block;
+        position: absolute;
+        // top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 40px;
+        background-color: #0f880f;
+        height: 400px;
+        z-index: 15;
+
+        &.desktop-nav__expansion--priority {
+          z-index: 20;
+        }
+      }
+    }
+  }
+
+  .desktop-nav__expansion {
+    display: none;
   }
 }
 
