@@ -21,6 +21,10 @@ $black-gray-darker: #2c2b2d;
 $black-gray-transluscent: rgba(50,49,51, 0.9);
 $off-black: rgba(0,0,0,0.9);
 
+$very-light-gray: #f6f6f6;
+$dark-navy: #17252A;
+$dark-navy-transluscent:rgba(23, 37, 42, 0.9);
+
 // ------------- MIXINS -------------
 
 @mixin transition($arg...) {
