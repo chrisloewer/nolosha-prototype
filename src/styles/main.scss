@@ -82,6 +82,7 @@ h1 {
     flex-direction: column;
     overflow: visible;
     border-radius: 0;
+    background: #FFFFFF;
     @include transition(all 0.2s);
     @include shadow(0 -1px 10px 2px transparentize($black-gray, 0.4));
 
@@ -209,14 +210,12 @@ h1 {
     .mobile-menu-control__home-icon {
       width: 40px;
       margin: 10px;
-      background-color: slategray;
       background: url('../resources/icons/home.svg') no-repeat center center;
     }
     
     .mobile-menu-control__back-icon {
       width: 10px;
       margin: 2px 0 0 10px;
-      background-color: slategray;
       background: url('../resources/icons/arrow_reverse.svg') no-repeat center center;
     }
 
@@ -298,9 +297,10 @@ h1 {
 }
 
 .nav-submenu {
-  margin-top: 20px;
-  background-color: #882244;
   height: 100%;
+  margin-top: 20px;
+  background: $very-light-gray;
+  @include shadow(0 6px 7px -2px transparentize($black-gray, 0.4));
 
   .nav-submenu__header {
     text-align: center;
@@ -382,7 +382,11 @@ h1 {
     margin: 10px;
     width: 200px;
     height: 120px;
-    background: #9999CC;
+    background: $dark-navy-transluscent;
+
+    &:hover, &:active {
+      background: $dark-navy;
+    }
 
     @media (min-width: $tabletWidth) {
       margin: 20px;
