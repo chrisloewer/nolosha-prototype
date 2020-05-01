@@ -41,7 +41,7 @@ h1 {
 .flex-layout {
   position: relative;
   min-height: 100vh;
-  background-color: $white-gray;
+  background-color: $very-light-gray;
   display: flex;
   flex-direction: column;
 }
@@ -55,7 +55,7 @@ h1 {
   left: 15px;
   width: 50px;
   z-index: 15;
-  background: $black-gray-transluscent;
+  background: $dark-navy-transluscent;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -102,7 +102,8 @@ h1 {
 
 .flex-layout__footer {
   height: 120px;
-  background: #777777;
+  background: $dark-navy; 
+  color: $white-gray;
 }
 
 
@@ -151,7 +152,7 @@ h1 {
 .mobile-drawer {
   // Menu closed by default
   z-index: 10;
-  background-color: $medium-gray;
+  background-color: white;
   height: 100vh;
   width: 0;
   overflow: hidden;
@@ -201,7 +202,7 @@ h1 {
   // Mobile Menu navigation
   .mobile-menu-control {
     display: flex;
-    background: snow;
+    background: $very-light-gray;
     height: 40px;
     border-bottom: 1px solid $neutral;
     
@@ -222,7 +223,7 @@ h1 {
     .mobile-menu-control__title {
       display: inline-block;
       flex-grow: 1;
-      background-color: snow;
+      background-color: $very-light-gray;
       line-height: 40px;
       padding-left: 10px;
     }
@@ -240,7 +241,7 @@ h1 {
       padding: 15px 20px;
       font-size: 18px;
       font-weight: 300;
-      background: $white-gray;
+      background: white;
 
       &:not(:last-of-type) {
         border-bottom: 0.5px solid $neutral;
